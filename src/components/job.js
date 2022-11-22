@@ -3,16 +3,51 @@ import { FormattedDate, FormattedNumber, FormattedMessage } from 'react-intl';
 
 
 const Job = (props) => {
+  const renderSlary = () => {
+    if (window.navigator.language === 'es-ES') {
+      if (props.offer.salary === 1) return props.offer.salary + " millón";
+      else return props.offer.salary + " millones";
+    }
+    else {
+      if (props.offer.salary === 1) return props.offer.salary + " million";
+      else return props.offer.salary + " millions";
+    }
+
+  };
+
+
   return (
     <tr>
-      <th scope="row">{props.offer.id}</th>
-      <td>{props.offer.name}</td>
-      <td>{props.offer.company}</td>
+      <th scope="row">
+        <FormattedMessage
+          id="job.id"
+          defaultMessage={props.offer.id}
+          description="Job id"
+        />
+      </th>
       <td>
-        {props.offer.salary} millones
-          
+        <FormattedMessage
+          id="job.id"
+          defaultMessage={props.offer.name}
+          description="Job id"
+        />
       </td>
-      <td>{props.offer.city}</td>
+      <td>
+        <FormattedMessage
+          id="job.id"
+          defaultMessage={props.offer.company}
+          description="Job id"
+        />
+      </td>
+      <td>
+        {renderSlary()}
+
+      </td>
+      <td><FormattedMessage
+        id="job.id"
+        defaultMessage={props.offer.city}
+        description="Job id"
+      /></td>
       <td>
         <FormattedDate
           value={new Date(props.offer.date)}
@@ -33,7 +68,7 @@ const Job = (props) => {
           numberingSystem="latn"
           signDisplay="auto"
           style="decimal"
-          useGrouping="always"          
+          useGrouping="always"
         />
       </td>
     </tr>

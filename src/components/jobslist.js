@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import Job from "./job";
+import en from "../locales/en.json"
+import es from "../locales/es.json"
+
+let idiom = en
+
 
 const JobsList = () => {
   const [offers] = useState([
@@ -31,19 +36,29 @@ const JobsList = () => {
       views: 1270
     },
   ]);
+  if(window.navigator.language === 'es-ES'){
+    idiom=es
+  }
+  else{
+    idiom=en
+  }
 
   return (
+   
     <div>
-      <table className="table">
+    
+    
+      <table className="table" >
         <thead className="thead-dark">
           <tr>
+            
             <th scope="col">#</th>
-            <th scope="col">Position</th>
-            <th scope="col">Company</th>
-            <th scope="col">Salary</th>
-            <th scope="col">City</th>
-            <th scope="col">Publication date</th>
-            <th scope="col">Views</th>
+            <th scope="col">{idiom.Position}</th>
+            <th scope="col">{idiom.Company}</th>
+            <th scope="col">{idiom.Salary}</th>
+            <th scope="col">{idiom.City}</th>
+            <th scope="col">{idiom.PublicationDate}</th>
+            <th scope="col">{idiom.Views}</th>
           </tr>
         </thead>
         <tbody>
